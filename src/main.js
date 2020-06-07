@@ -3,6 +3,7 @@ import 'babel-polyfill';
 
 import router from './router';
 import AppLayout from './components/AppLayout.vue';
+import './global-components';
 
 new Vue({
   el: '#app',
