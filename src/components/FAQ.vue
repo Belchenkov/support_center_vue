@@ -9,7 +9,7 @@
     </div>
 
     <section class="list">
-      <article v-for="question of questions">
+      <article v-for="question of questionList">
         <h2 v-html="question.title"></h2>
         <p v-html="question.content"></p>
       </article>
@@ -17,15 +17,22 @@
   </main>
 </template>
 <script>
+  import RemoteData from '../mixins/RemoteData';
+
   export default {
-    data () {
+    /*data () {
       return {
         questions: [],
         error: null,
         loading: false,
       }
-    },
-    async created () {
+    },*/
+    mixins: [
+      RemoteData({
+        questionList: 'questions',
+      }),
+    ],
+    /*async created () {
       this.loading = true;
 
       try {
@@ -35,6 +42,6 @@
       }
 
       this.loading = false;
-    },
+    },*/
   }
 </script>
