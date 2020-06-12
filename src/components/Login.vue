@@ -94,18 +94,26 @@
         return this.username && this.password &&
           (this.mode !== 'signup' || this.signupValid);
       },
-      methods: {
-        async operation() {
-          await this[this.mode]();
-        },
-        async login () {
-          // TODO
-        },
-        async signup () {
-          // TODO
-        },
-      }
     },
+    methods: {
+      async operation() {
+        await this[this.mode]();
+      },
+      async login () {
+        // TODO
+      },
+      async signup () {
+        await this.$fetch('signup', {
+          method: 'POST',
+          body: JSON.stringify({
+            username: this.username,
+            password: this.password,
+            email: this.email
+          })
+        });
+        this.mode = 'login';
+      },
+    }
   }
 </script>
 
