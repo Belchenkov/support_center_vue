@@ -108,3 +108,11 @@
     },
   }
 </script>
+
+<style lang="stylus" scoped>
+  .form {
+    >>> .content {
+      max-width: 400px;
+    }
+  }
+</style>
