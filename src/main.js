@@ -9,16 +9,28 @@ import './global-components';
 import AppLayout from './components/AppLayout.vue';
 
 // Plugins
-import VueFetch from './plugins/fetch';
+import VueFetch, { $fetch } from './plugins/fetch';
 import VueState from './plugins/state';
 Vue.use(VueFetch, {
   baseUrl: 'http://localhost:3000/',
 });
 Vue.use(VueState, state);
 
-new Vue({
-  el: '#app',
-  data: state,
-  render: h => h(AppLayout),
-  router,
-})
+async function main () {
+  // Get user info
+  try {
+    state.user = await $fetch('user');
+  } catch (e) {
+    console.warn(e);
+  }
+
+  // Launch app
+  new Vue({
+    el: '#app',
+    data: state,
+    router,
+    render: h => h(AppLayout),
+  })
+}
+
+main();
