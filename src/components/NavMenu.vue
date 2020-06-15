@@ -2,6 +2,7 @@
   <nav class="menu">
     <router-link exact :to="{ name: 'home' }">Home</router-link>
     <router-link :to="{ name: 'faq' }">FAQ</router-link>
+    <router-link :to="{ name: 'tickets' }">Support tickets</router-link>
     <template v-if="$state.user">
       <a>{{ $state.user.username }}</a>
       <a @click="logout">Logout</a>
