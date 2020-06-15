@@ -4,7 +4,7 @@ import * as Users from './connectors/users'
 import * as Questions from './connectors/questions'
 import * as Tickets from './connectors/tickets'
 
-initData()
+initData();
 
 function privateRoute (req, res, next) {
   if (!req.user) {
@@ -32,7 +32,7 @@ export default function (app) {
   app.post('/signup', async (req, res) => {
     try {
       if (req.user) {
-        throw Error('Unauthorized')
+        throw Error('Unauthorized');
       } else {
         const newDoc = await Users.createUser({
           username: req.body.username,
