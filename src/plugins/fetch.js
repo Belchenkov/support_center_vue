@@ -28,12 +28,11 @@ export async function $fetch (url, options) {
       });
     }
   } else {
-            const message = await response.text();
-            const error = new Error(message);
-            error.response = response;
-            throw error;
-          }
-        }
+    const message = await response.text();
+    const error = new Error(message);
+    error.response = response;
+    throw error;
+  }
 }
 
 export default {
