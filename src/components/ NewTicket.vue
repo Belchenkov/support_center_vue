@@ -38,6 +38,8 @@
 </template>
 
 <script>
+  import PersistantData from '../mixins/PersistantData';
+
   export default {
     data () {
       return {
@@ -50,6 +52,12 @@
         return !!this.title && !!this.description;
       },
     },
+    mixins: [
+      PersistantData('NewTicket', [
+        'title',
+        'description'
+      ])
+    ],
     methods: {
       async operation () {
         const result = await this.$fetch('tickets/new', {
