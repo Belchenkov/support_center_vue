@@ -20,6 +20,19 @@
         placeholder="Describe your problem in details"
         rows="4"
       />
+      <template slot="actions">
+        <router-link
+          tag="button"
+          :to="{name: 'tickets'}"
+          class="secondary">
+          Go back
+        </router-link>
+        <button
+          type="submit"
+          :disabled="!valid">
+          Send ticket
+        </button>
+      </template>
     </SmartForm>
   </div>
 </template>
@@ -39,7 +52,14 @@
     },
     methods: {
       async operation () {
-        // TODO
+        const result = await this.$fetch('tickets/new', {
+          method: 'POST',
+          body: JSON.stringify({
+            title: this.title,
+            description: this.description
+          })
+        });
+        this.title = this.description = '';
       },
     },
   }
