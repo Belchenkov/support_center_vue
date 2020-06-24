@@ -10,6 +10,7 @@ import Login from './components/Login.vue';
 import TicketsLayout from './components/TicketsLayout.vue';
 import Tickets from './components/Tickets';
 import NewTicket from './components/ NewTicket.vue';
+import Ticket from './components/Ticket.vue';
 
 const routes = [
   { path: '/', name: 'home', component: Home },
@@ -28,6 +29,7 @@ const routes = [
     children: [
       { path: '', name: 'tickets', component: Tickets },
       { path: 'new', name: 'new-ticket', component: NewTicket },
+      { path: ':id', name: 'ticket', component: Ticket, props: true },
     ]
   },
 ];
